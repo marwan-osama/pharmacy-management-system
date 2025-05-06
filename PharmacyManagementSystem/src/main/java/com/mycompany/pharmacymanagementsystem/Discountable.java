@@ -9,5 +9,7 @@ package com.mycompany.pharmacymanagementsystem;
  * @author alima
  */
 public interface Discountable {
-    
+    double discountPercentage = 10;
+    void applyDiscount(double discountPercentage);
+    void applyDiscount();
 }
