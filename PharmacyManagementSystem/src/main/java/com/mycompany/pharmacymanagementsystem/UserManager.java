@@ -26,9 +26,17 @@ public class UserManager {
         return instance;
     }
 
-    public void addUser(User user) 
+    public boolean addUser(User user) 
     {
+        for (User existingUser : users) {
+            if (existingUser.getUsername().equals(user.getUsername())) {
+                System.out.println("Username already exists");
+                return false;
+            }
+        }
+    
         users.add(user);
+        return true;
     }
 
     public boolean removeUser(User requestingUser, User userToRemove) 

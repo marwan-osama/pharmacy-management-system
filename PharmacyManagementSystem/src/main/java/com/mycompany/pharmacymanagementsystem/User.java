@@ -18,7 +18,6 @@ public abstract class User {
     private String fullName;
     private int phoneNumber;
     private final LocalDate registrationDate;
-    private static int numberOfUsers;
     
     User(String userID, String username,String password,
             String fullName,int phoneNumber)
@@ -29,7 +28,6 @@ public abstract class User {
         this.fullName = fullName;
         this.phoneNumber = phoneNumber;
         this.registrationDate = LocalDate.now();
-        numberOfUsers++;
     }
     
     public String getUserID()
@@ -80,11 +78,6 @@ public abstract class User {
     public LocalDate getRegistrationDate()
     {
         return this.registrationDate;
-    }
-
-    public static int getNumberOfUsers()
-    {
-        return numberOfUsers;
     }
 
     public boolean login(String username, String password)

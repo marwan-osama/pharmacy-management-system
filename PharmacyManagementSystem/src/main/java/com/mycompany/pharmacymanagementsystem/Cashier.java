@@ -5,7 +5,6 @@
 
 package com.mycompany.pharmacymanagementsystem;
 
-
 class Cashier extends User {
     private int sales;
 
@@ -20,15 +19,27 @@ class Cashier extends User {
         return sales;
     }
 
-    public void setSales(int sales) 
-    {
-        this.sales = sales;
+    public boolean processSale(PharmacyItem item, int quantity) {
+    if (item == null) {
+        System.out.println("Item not found.");
+        return false;
     }
-
-    public void processSale(PharmacyItem item, int quantity) 
-    {
-        // Process the sale of the item
-        // Update sales count
-        this.sales += quantity;
+    
+    if (item.getQuantity() < quantity) {
+        System.out.println("Not enough stock available for " + item.getName());
+        return false;
+    }
+    
+    // Calculate the sale amount
+    double saleAmount = item.getPrice() * quantity;
+    
+    // Update inventory
+    item.setQuantity(item.getQuantity() - quantity);
+    Inventory.getInstance().updateInventory(item);
+    
+    // Update the cashier's sales
+    this.sales += saleAmount;
+    
+    return true;
     }
 }

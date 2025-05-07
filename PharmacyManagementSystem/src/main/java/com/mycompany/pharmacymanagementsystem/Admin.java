@@ -20,9 +20,9 @@ public class Admin extends User {
         UserManager.getInstance().addUser(this);
     }
 
-    public void addUser(User user) 
+    public boolean addUser(User user) 
     {
-        UserManager.getInstance().addUser(user);
+        return UserManager.getInstance().addUser(user);
     }
 
     public boolean removeUser(User user) 
@@ -32,20 +32,18 @@ public class Admin extends User {
 
     public boolean addItem(PharmacyItem item)
     {
-        
-        return true;
+       return Inventory.getInstance().addItem(item);
     }
 
     public boolean removeItem(PharmacyItem item)
     {
-        // Remove item from the system
-        return true;
+        return Inventory.getInstance().removeItem(item.getItemID());
     }
 
     public boolean updateInventory(PharmacyItem item, int quantity) 
     {
-        // Update inventory of the item
-        return true;
+        item.setQuantity(quantity);
+        return Inventory.getInstance().updateInventory(item);
     }
 
     public void generateReport() 

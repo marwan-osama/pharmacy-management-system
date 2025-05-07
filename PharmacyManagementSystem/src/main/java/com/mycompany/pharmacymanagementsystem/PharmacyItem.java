@@ -5,6 +5,7 @@
 
 package com.mycompany.pharmacymanagementsystem;
 
+
 public abstract class PharmacyItem implements Comparable<PharmacyItem> {
 
     private int itemID;
@@ -15,8 +16,14 @@ public abstract class PharmacyItem implements Comparable<PharmacyItem> {
     private int lowStockThreshold;
 
     PharmacyItem(int itemID, String name, double price, int quantity, String manufacturer) {
-        if(itemID < 0 || price < 0 || quantity < 0){
-            System.out.println("Invalid item ID, price, or quantity");
+        if(itemID < 0) {
+        throw new IllegalArgumentException("Item ID cannot be negative");
+        }
+        if(price < 0) {
+            throw new IllegalArgumentException("Price cannot be negative");
+        }
+        if(quantity < 0) {
+            throw new IllegalArgumentException("Quantity cannot be negative");
         }
         else{
             this.itemID = itemID;
@@ -24,9 +31,9 @@ public abstract class PharmacyItem implements Comparable<PharmacyItem> {
             this.price = price;
             this.quantity = quantity;
             this.manufacturer = manufacturer;
+            this.lowStockThreshold = 5; 
         }
     }
-    PharmacyItem(){}
 
     public int getItemID() {
         return itemID;
