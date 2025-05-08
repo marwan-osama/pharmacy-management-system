@@ -1,3 +1,3 @@
 # pharmacy-management-system
 #UML
-![PharmacyManagementSystemUML](https://github.com/user-attachments/assets/e6974bfd-17b8-4400-a4d5-0a582c8b66dc)
+![PharmacyManagementSystemUML](https://github.com/user-attachments/assets/ecff669e-d6bc-4f65-aaad-c72074fcfdb4)
