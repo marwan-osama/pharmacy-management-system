@@ -31,15 +31,13 @@ public class Medicine extends PharmacyItem implements Expirable{
 
     @Override
     public int compareTo(PharmacyItem item) {
-        if(this.expiryDate.isBefore(((Medicine)item).expiryDate)) {
+        if(this.getQuantity() < item.getQuantity()){
             return -1;
         }
-        else if(this.expiryDate.isAfter(((Medicine)item).expiryDate)) {
+        if(this.getQuantity() > item.getQuantity()){
             return 1;
         }
-        else {
-            return 0;
-        }
+        return 0;
     }
 
     @Override

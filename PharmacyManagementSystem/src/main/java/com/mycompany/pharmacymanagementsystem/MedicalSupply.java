@@ -80,4 +80,15 @@ public class MedicalSupply extends PharmacyItem implements Discountable{
         return "Medical Supply";
     }
 
+    @Override
+    public int compareTo(PharmacyItem item) {
+        if(this.getQuantity() < item.getQuantity()){
+            return -1;
+        }
+        if(this.getQuantity() > item.getQuantity()){
+            return 1;
+        }
+        return 0;
+    }
+
 }
