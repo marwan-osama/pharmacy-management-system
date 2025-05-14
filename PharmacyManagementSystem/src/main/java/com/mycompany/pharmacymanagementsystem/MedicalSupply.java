@@ -6,7 +6,7 @@ package com.mycompany.pharmacymanagementsystem;
 
 public class MedicalSupply extends PharmacyItem implements Discountable{
 
-    public enum Size {small, medium, large}
+    public static enum Size {small, medium, large}
 
     private double discountedPrice = 0;
     private String materialType;

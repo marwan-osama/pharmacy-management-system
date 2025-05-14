@@ -17,6 +17,14 @@ public class Order {
     private List<PharmacyItem> items;
     private LocalDate orderDate;
     private double totalAmount;
+    
+    public Order(int orderID, Cashier cashier, List<PharmacyItem> items, LocalDate orderDate) {
+        this.orderID = orderID;
+        this.cashier = cashier;
+        this.items = items;
+        this.orderDate = orderDate;
+        calculateTotalAmount();
+    }
 
     public int getOrderID() {
         return orderID;

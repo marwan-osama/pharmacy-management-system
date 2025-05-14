@@ -20,6 +20,10 @@ public class Medicine extends PharmacyItem implements Expirable{
     public LocalDate getExpiryDate() {
         return expiryDate;
     }
+    
+    public void setExpiryDate(LocalDate expiryDate) {
+        this.expiryDate = expiryDate;
+    }
 
     public String getUsageInstructions() {
         return usageInstructions;
