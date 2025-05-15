@@ -10,7 +10,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-
+import javafx.geometry.Insets;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
@@ -38,6 +38,9 @@ public class OrdersViewScreen {
         // Detail view
         Text details = new Text("Select an order to see details...");
 
+        VBox detailsWrapper = new VBox(details);
+        detailsWrapper.setPadding(new Insets(0, 0, 0, 10));
+
         ordersTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
                 StringBuilder sb = new StringBuilder();
@@ -57,7 +60,7 @@ public class OrdersViewScreen {
         title.setFont(Font.font("Arial", 16));
         title.setStyle("-fx-padding: 0.5em 0 0 0.5em;");
 
-        return new VBox(10, title, ordersTable, details);
+        return new VBox(10, title, ordersTable, detailsWrapper);
     }
 
     private List<Order> generateSampleOrders() {
