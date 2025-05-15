@@ -24,7 +24,7 @@ public class MedicalSupply extends PharmacyItem implements Discountable{
     )
     {
         super(itemID, name, price, quantity, manufacturer);
-        applyDiscount(discountPercentage);
+        applyDiscount();
         this.materialType = materialType;
         this.size = size;
     }
@@ -64,15 +64,11 @@ public class MedicalSupply extends PharmacyItem implements Discountable{
     public double getDiscountedPrice() {
         return discountedPrice;
     }
-
-    @Override
-    public void applyDiscount(double discountPercentage) {
-        discountedPrice = super.getPrice() * (1 - discountPercentage)/(double)100;
-    }
-
+    
     @Override
     public void applyDiscount() {
-        discountedPrice = super.getPrice() * (1 - discountPercentage)/(double)100;
+        // Use default discount percentage
+        this.discountedPrice = super.getPrice() * (1 - discountPercentage/100.0);
     }
 
     @Override
