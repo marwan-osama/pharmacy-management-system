@@ -10,6 +10,5 @@ package com.mycompany.pharmacymanagementsystem;
  */
 public interface Discountable {
     double discountPercentage = 10;
-    void applyDiscount(double discountPercentage);
     void applyDiscount();
 }
