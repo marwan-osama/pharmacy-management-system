@@ -19,6 +19,12 @@ import javafx.scene.text.Font;
 public class UserManagementScreen {
 
     private ObservableList<User> users = FXCollections.observableArrayList();
+    
+    private boolean isAdmin;
+    
+    public UserManagementScreen(boolean isAdmin) {
+        this.isAdmin = isAdmin;
+    }
 
     public VBox getView() {
         TableView<User> userTable = new TableView<>();
@@ -82,7 +88,14 @@ public class UserManagementScreen {
         addButton.setOnAction(e -> addUser(userTable));
 
         // Layout
-        HBox buttonBox = new HBox(10, viewButton, editButton, deleteButton, addButton);
+        HBox buttonBox;
+        
+        if (this.isAdmin) {
+            buttonBox = new HBox(10, viewButton, editButton, deleteButton, addButton);
+        } else {
+            buttonBox = new HBox(10, viewButton);
+        }
+
         buttonBox.setPadding(new Insets(10));
         
         Label title = new Label("User Management");

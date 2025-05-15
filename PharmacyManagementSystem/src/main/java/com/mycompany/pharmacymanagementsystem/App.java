@@ -11,7 +11,9 @@ public class App extends Application {
     public void start(Stage primaryStage) {
         UserManager userManager = UserManager.getInstance();
         Admin admin1 = new Admin("1", "admin", "admin", "marwan osama", 12345678);
+        Cashier cashier1 = new Cashier("1", "cashier", "cashier", "marwan osama", 12345678);
         userManager.addUser(admin1);
+        userManager.addUser(cashier1);
         
         LoginScreen loginScreen = new LoginScreen();
         loginScreen.start(primaryStage);

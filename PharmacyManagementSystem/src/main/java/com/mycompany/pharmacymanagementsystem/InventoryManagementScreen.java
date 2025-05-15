@@ -20,6 +20,12 @@ import javafx.scene.text.Font;
 public class InventoryManagementScreen {
 
     private ObservableList<PharmacyItem> inventory = FXCollections.observableArrayList();
+    
+    private boolean isAdmin;
+    
+    public InventoryManagementScreen(boolean isAdmin) {
+        this.isAdmin = isAdmin;
+    }
 
     public VBox getView() {
         TableView<PharmacyItem> inventoryTable = new TableView<>();
@@ -117,7 +123,14 @@ public class InventoryManagementScreen {
         checkExpiryButton.setOnAction(e -> checkMedicineExpiry());
 
         // Layout
-        HBox buttonBox = new HBox(10, viewButton, editButton, deleteButton, addButton, checkExpiryButton);
+        HBox buttonBox;
+        
+        if (this.isAdmin) {
+            buttonBox = new HBox(10, viewButton, editButton, deleteButton, addButton, checkExpiryButton);
+        } else {
+            buttonBox = new HBox(10, viewButton, checkExpiryButton);
+        }
+        
         buttonBox.setPadding(new Insets(10));
         
         Label title = new Label("Inventory Management");

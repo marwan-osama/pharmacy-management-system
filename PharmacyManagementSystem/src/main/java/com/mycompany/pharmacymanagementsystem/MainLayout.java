@@ -15,7 +15,7 @@ public class MainLayout {
 
     private Label welcomeLabel;
 
-    public MainLayout(Stage stage, String username) {
+    public MainLayout(Stage stage, User user) {
         root = new BorderPane();
 
         // Header (Top)
@@ -26,7 +26,7 @@ public class MainLayout {
         ImageView userIcon = new ImageView(userIconImage);
         userIcon.setFitHeight(40);
         userIcon.setFitWidth(40);
-        welcomeLabel = new Label("Hello " + username + " !");
+        welcomeLabel = new Label("Hello " + user.getFullName() + " !");
         welcomeLabel.setFont(Font.font("Arial", 18));
         welcomeLabel.setStyle("-fx-text-fill: white;");
         header.getChildren().addAll(userIcon, welcomeLabel);
@@ -47,15 +47,15 @@ public class MainLayout {
         usersBtn.setMaxWidth(Double.MAX_VALUE);
 
         // Navigation actions
-        inventoryBtn.setOnAction(e -> setContent(new InventoryManagementScreen().getView()));
+        inventoryBtn.setOnAction(e -> setContent(new InventoryManagementScreen(user instanceof Admin).getView()));
         ordersBtn.setOnAction(e -> setContent(new OrdersViewScreen().getView()));
-        usersBtn.setOnAction(e -> setContent(new UserManagementScreen().getView()));
+        usersBtn.setOnAction(e -> setContent(new UserManagementScreen(user instanceof Admin).getView()));
 
         sideNav.getChildren().addAll(inventoryBtn, ordersBtn, usersBtn);
         root.setRight(sideNav);
 
         // Default center content
-        setContent(new InventoryManagementScreen().getView());
+        setContent(new InventoryManagementScreen(user instanceof Admin).getView());
 
         stage.setScene(new Scene(root, 800, 600));
         stage.setTitle("Pharmacy Management System");

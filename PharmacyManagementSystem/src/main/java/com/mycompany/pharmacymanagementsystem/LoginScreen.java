@@ -78,7 +78,7 @@ public class LoginScreen {
 
         for (User user : userManager.getUsers()) {
             if (user.getUsername().equals(userName) && user.getPassword().equals(passWord)) {
-                new MainLayout(stage, user.getFullName());
+                new MainLayout(stage, user);
                 return;
             }
         }
